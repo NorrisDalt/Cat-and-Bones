@@ -1,26 +1,32 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private HashSet<string> collectedKeys = new HashSet<string>();
+    private bool hasGem = true;
+
+    public GameObject gem;
+    public Transform gemSlot;
+    public Entrance entrance;
     private bool hasIdol = false;
-    public TextMeshProUGUI warningText;
 
-    public void CollectKey(string keyID)
+    void Start()
     {
-        collectedKeys.Add(keyID);
-        Debug.Log("Collected key: " + keyID);
+        entrance = FindObjectOfType<Entrance>();
     }
-
-    public bool HasKey(string keyID)
+    private void OnTriggerEnter(Collider other)
     {
-        return collectedKeys.Contains(keyID);
-    }
+        if (other.CompareTag("Entrance") && hasGem)
+        {
+            hasGem = false;
 
+            if (entrance != null)
+            {
+                entrance.OpenEntrance();
+            }
+        }
+    }
     public void CollectIdol()
     {
         if (hasIdol) return;
@@ -29,21 +35,9 @@ public class PlayerInventory : MonoBehaviour
         Debug.Log("Collected the Idol!");
         StartCoroutine(AwakenSkeletonsWithDelay());
     }
-
     private IEnumerator AwakenSkeletonsWithDelay()
     {
-        if (warningText != null)
-        {
-            warningText.text = "GET OUT OF THERE!";
-            warningText.enabled = true;
-        }
-
         yield return new WaitForSeconds(1f);
-
-        if (warningText != null)
-        {
-            warningText.enabled = false;
-        }
 
         SkeletonAI[] skeletons = FindObjectsOfType<SkeletonAI>();
         foreach (SkeletonAI skeleton in skeletons)

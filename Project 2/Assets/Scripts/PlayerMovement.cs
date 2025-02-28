@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 3f;
     public Rigidbody rb;
-
     private void FixedUpdate()
     {
         Move();
