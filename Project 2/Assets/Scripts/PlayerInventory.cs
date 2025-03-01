@@ -9,7 +9,6 @@ public class PlayerInventory : MonoBehaviour
     public GameObject gem;
     public Transform gemSlot;
     public Entrance entrance;
-    private bool hasIdol = false;
 
     void Start()
     {
@@ -26,28 +25,5 @@ public class PlayerInventory : MonoBehaviour
                 entrance.OpenEntrance();
             }
         }
-    }
-    public void CollectIdol()
-    {
-        if (hasIdol) return;
-
-        hasIdol = true;
-        Debug.Log("Collected the Idol!");
-        StartCoroutine(AwakenSkeletonsWithDelay());
-    }
-    private IEnumerator AwakenSkeletonsWithDelay()
-    {
-        yield return new WaitForSeconds(1f);
-
-        SkeletonAI[] skeletons = FindObjectsOfType<SkeletonAI>();
-        foreach (SkeletonAI skeleton in skeletons)
-        {
-            skeleton.Awaken(transform);
-        }
-    }
-
-    public bool HasIdol()
-    {
-        return hasIdol;
     }
 }

@@ -6,8 +6,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float speed = 3f;
+    public float walkSpeed = 0.5f;
+    public float sprintSpeed = 2f;
     public Rigidbody rb;
+    private float currentSpeed;
     private void FixedUpdate()
     {
         Move();
@@ -27,11 +29,19 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
 
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            currentSpeed = sprintSpeed;
+        }
+        else
+        {
+            currentSpeed = walkSpeed;
+        }
         Vector3 forwardVertInput = verticalInput * forward;
         Vector3 rightHoriInput = horizontalInput * right;
 
         Vector3 moveDirectionRelCam = forwardVertInput + rightHoriInput;
 
-        rb.MovePosition(transform.position + moveDirectionRelCam * speed * Time.fixedDeltaTime);
+        rb.MovePosition(transform.position + moveDirectionRelCam *currentSpeed * Time.fixedDeltaTime);
     }
 }

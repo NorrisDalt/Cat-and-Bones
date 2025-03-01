@@ -1,43 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class SkeletonAI : MonoBehaviour
+public class Skeleton : MonoBehaviour
 {
-    public Transform player;
-    private NavMeshAgent agent;
-    private bool isAwakened = false;
+    public Transform[] waypoints;
+    public float moveSpeed = 0.4f;
+    public float rotationSpeed = 3f;
+    private int currentWaypointIndex = 0;
+    private Transform targetWaypoint;
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.enabled = false;
+        if (waypoints.Length > 0)
+        {
+            targetWaypoint = waypoints[currentWaypointIndex];
+        }
     }
 
     void Update()
     {
-        if (isAwakened && player != null)
+        if (targetWaypoint != null)
         {
-            agent.SetDestination(player.position);
+            MoveToWaypoint();
         }
     }
 
-    public void Awaken(Transform transform)
+    void MoveToWaypoint()
     {
-        isAwakened = true;
-        agent.enabled = true;
-        Debug.Log(gameObject.name + " has awakened!");
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, moveSpeed * Time.deltaTime);
+
+        RotateTowards(targetWaypoint.position);
+
+        if (transform.position == targetWaypoint.position)
         {
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage();
-            }
+            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+            targetWaypoint = waypoints[currentWaypointIndex];
+        }
+    }
+
+    void RotateTowards(Vector3 targetPosition)
+    {
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        direction.y = 0;
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
     }
 }
