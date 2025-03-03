@@ -27843,6 +27843,7 @@ GameObject:
   - component: {fileID: 1838300383}
   - component: {fileID: 1838300382}
   - component: {fileID: 1838300381}
+  - component: {fileID: 1838300384}
   m_Layer: 0
   m_Name: EndTrigger
   m_TagString: Untagged
@@ -27894,6 +27895,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1838300384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838300380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1affeb425eac35047ae8d347456c56b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1842723565 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0684a16e951c66d4481b1aa866e6f079, type: 3}
@@ -32227,7 +32240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 898412825442060881, guid: bbc3694fe70cb07429d6aa2d3fcf5bba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.88
+      value: 3.86
       objectReference: {fileID: 0}
     - target: {fileID: 898412825442060881, guid: bbc3694fe70cb07429d6aa2d3fcf5bba, type: 3}
       propertyPath: m_LocalRotation.w
