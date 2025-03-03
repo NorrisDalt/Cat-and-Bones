@@ -3873,6 +3873,57 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0684a16e951c66d4481b1aa866e6f079, type: 3}
   m_PrefabInstance: {fileID: 1887865511}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &345486632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 345486634}
+  - component: {fileID: 345486633}
+  m_Layer: 0
+  m_Name: RockController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &345486633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345486632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ed7f28c65f5a04eb7fd000df206272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockPrefab: {fileID: 5929433187454112003, guid: 2d6ae7959ded05344a3f717a5a81cc2b, type: 3}
+  spawnPoint1: {fileID: 1319292938}
+  spawnPoint2: {fileID: 1899220713}
+  spawnInterval: 2
+  rockSpeed: 5
+--- !u!4 &345486634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345486632}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5439358, y: 1.2133582, z: -2.2946625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1319292938}
+  - {fileID: 1899220713}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &347235071
 GameObject:
   m_ObjectHideFlags: 0
@@ -18484,6 +18535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9a35735970d94d459428559fffeecc3, type: 3}
+      propertyPath: m_TagString
+      value: BackWall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20916,6 +20971,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318513128}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1319292937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1319292938}
+  m_Layer: 0
+  m_Name: RockSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1319292938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319292937}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.221, y: -0.673, z: -0.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 345486634}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1320394793 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6489329232470724721, guid: 3f93bd68c62d511438f2662298a00f1f, type: 3}
@@ -22283,6 +22369,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e9a35735970d94d459428559fffeecc3, type: 3}
       propertyPath: m_Name
       value: wall (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9a35735970d94d459428559fffeecc3, type: 3}
+      propertyPath: m_TagString
+      value: BackWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28339,6 +28429,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1216711914}
   m_SourcePrefab: {fileID: 100100000, guid: 907f408d6f34698428a8cd1da54aff83, type: 3}
+--- !u!1 &1899220712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899220713}
+  m_Layer: 0
+  m_Name: RockSpawn (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1899220713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899220712}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.221, y: -0.673, z: 0.595}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 345486634}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1905430013
 GameObject:
   m_ObjectHideFlags: 0
@@ -30152,6 +30273,89 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.22682811, y: 0.13632856, z: 0.014511132}
   m_Center: {x: 0.000038638715, y: -0.0025777814, z: 0}
+--- !u!1 &2019271569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2019271572}
+  - component: {fileID: 2019271571}
+  - component: {fileID: 2019271570}
+  m_Layer: 0
+  m_Name: RockHider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &2019271570
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019271569}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 29f569427fe4c404c8200f147f9350d5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2019271571
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019271569}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2019271572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019271569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.827, y: 0.529, z: -2.156}
+  m_LocalScale: {x: 0.022965, y: 1, z: 2.0492513}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2019912391
 GameObject:
   m_ObjectHideFlags: 0
@@ -31730,7 +31934,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 898412825442060881, guid: bbc3694fe70cb07429d6aa2d3fcf5bba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.554
+      value: -0.83
       objectReference: {fileID: 0}
     - target: {fileID: 898412825442060881, guid: bbc3694fe70cb07429d6aa2d3fcf5bba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31738,7 +31942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 898412825442060881, guid: bbc3694fe70cb07429d6aa2d3fcf5bba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.798
+      value: -2.052
       objectReference: {fileID: 0}
     - target: {fileID: 898412825442060881, guid: bbc3694fe70cb07429d6aa2d3fcf5bba, type: 3}
       propertyPath: m_LocalRotation.w
@@ -31923,3 +32127,5 @@ SceneRoots:
   - {fileID: 883134028}
   - {fileID: 184076019}
   - {fileID: 1451178902}
+  - {fileID: 345486634}
+  - {fileID: 2019271572}

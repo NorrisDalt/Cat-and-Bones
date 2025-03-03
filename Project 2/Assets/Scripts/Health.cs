@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Player has died! Reloading scene...");
+        Debug.Log("Player has died!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reloads the scene
     }
 }
