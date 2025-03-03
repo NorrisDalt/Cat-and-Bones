@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class Idol : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public GameObject secretExit;
+    public static bool idolCollected = false;
+
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             Inventory inventory = other.GetComponent<Inventory>();
             if (inventory != null)
             {
+                idolCollected = true;
+
                 Destroy(gameObject);
+
+                Destroy(secretExit);
             }
         }
     }

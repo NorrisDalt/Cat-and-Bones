@@ -8,6 +8,7 @@ TagManager:
   - Key
   - KeyDoor
   - Idol
+  - BackWall
   layers:
   - Default
   - TransparentFX
