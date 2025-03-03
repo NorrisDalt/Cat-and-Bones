@@ -10,12 +10,11 @@ public class PlayerController: MonoBehaviour
     public Rigidbody rb;
     private float currentSpeed;
 
-    // Input mappings
     const string keyboardHorizontal = "Horizontal";
     const string keyboardVertical = "Vertical";
-    const string controllerHorizontal = "LeftStickX"; // Left Stick X
-    const string controllerVertical = "LeftStickY";   // Left Stick Y
-    const string sprintKey = "Sprint"; // Sprint Button (Controller)
+    const string controllerHorizontal = "LeftStickX";
+    const string controllerVertical = "LeftStickY";
+    const string sprintKey = "Sprint";
 
     private void FixedUpdate()
     {
@@ -24,11 +23,9 @@ public class PlayerController: MonoBehaviour
 
     private void Move()
     {
-        // Get input from Keyboard (WASD / Arrow Keys) and Controller (Left Stick)
         float horizontalInput = Input.GetAxisRaw(keyboardHorizontal) + Input.GetAxis(controllerHorizontal);
         float verticalInput = Input.GetAxisRaw(keyboardVertical) + Input.GetAxis(controllerVertical);
 
-        // Get camera-relative directions
         Vector3 forward = UnityEngine.Camera.main.transform.forward;
         Vector3 right = UnityEngine.Camera.main.transform.right;
         forward.y = 0;
@@ -38,7 +35,6 @@ public class PlayerController: MonoBehaviour
 
         Vector3 moveDirectionRelCam = (verticalInput * forward) + (horizontalInput * right);
 
-        // Sprinting (Keyboard: LeftShift, Controller: Assigned Sprint Button)
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetButton(sprintKey))
         {
             currentSpeed = sprintSpeed;
@@ -48,7 +44,6 @@ public class PlayerController: MonoBehaviour
             currentSpeed = walkSpeed;
         }
 
-        // Apply movement
         rb.MovePosition(transform.position + moveDirectionRelCam * currentSpeed * Time.fixedDeltaTime);
     }
 }
