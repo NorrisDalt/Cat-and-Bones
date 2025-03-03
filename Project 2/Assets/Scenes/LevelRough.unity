@@ -253,7 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7595038091496692462, guid: fc7ccb94d630c9b4c9ed508f05465b55, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.594
+      value: -1.462
       objectReference: {fileID: 0}
     - target: {fileID: 7595038091496692462, guid: fc7ccb94d630c9b4c9ed508f05465b55, type: 3}
       propertyPath: m_LocalPosition.y
@@ -261,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7595038091496692462, guid: fc7ccb94d630c9b4c9ed508f05465b55, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.2632775
+      value: 0.719
       objectReference: {fileID: 0}
     - target: {fileID: 7595038091496692462, guid: fc7ccb94d630c9b4c9ed508f05465b55, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16251,6 +16251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3283800e8422f4bbea7fb0491268d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gemInHand: {fileID: 0}
+  gemOnDoor: {fileID: 0}
+  door: {fileID: 0}
+  gemSparkleEffect: {fileID: 0}
 --- !u!65 &1227997668
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18748,7 +18752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7595038091496692462, guid: fc7ccb94d630c9b4c9ed508f05465b55, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.859
+      value: 2.967
       objectReference: {fileID: 0}
     - target: {fileID: 7595038091496692462, guid: fc7ccb94d630c9b4c9ed508f05465b55, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18902,6 +18906,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d5212d8667b0b4d9adabf5941a1314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
+  moveSpeed: 3
+  rotationSpeed: 5
 --- !u!54 &1528464809
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19001,6 +19008,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d5212d8667b0b4d9adabf5941a1314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
+  moveSpeed: 3
+  rotationSpeed: 5
 --- !u!1 &1557999794 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e9a35735970d94d459428559fffeecc3, type: 3}
