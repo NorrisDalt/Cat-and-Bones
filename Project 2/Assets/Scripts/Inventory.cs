@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
     {
         entrance = FindObjectOfType<Entrance>();
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Entrance") && hasGem)
@@ -31,6 +32,11 @@ public class Inventory : MonoBehaviour
         {
             keyCount++; //Counts number of keys
             Destroy(other.gameObject); // Destroys key
+        }
+
+        if (other.CompareTag("KeyDoor") && keyCount >= 2) // Checks if player has 2 keys
+        {
+            Destroy(other.gameObject); // Deletes the door
         }
     }
 }
