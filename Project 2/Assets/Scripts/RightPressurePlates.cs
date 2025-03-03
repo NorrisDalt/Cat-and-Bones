@@ -7,26 +7,51 @@ public class RightPressurePlates : MonoBehaviour
     public GameObject arrowPrefab;
     public Transform arrowSpawnPoint;
     public float arrowSpeed = 10f;
-    public float fireDelay = 0.5f; // delay before firing
+    public float fireDelay = 0.5f; // Delay before firing
     public float resetTime = 3f; // Time before it can be triggered again
+    public Renderer plateRenderer; // Reference to the plate's renderer
+    private Color originalColor; // Store original color
 
     private bool isTriggered = false;
 
+    private void Start()
+    {
+        if (plateRenderer != null)
+        {
+            originalColor = plateRenderer.material.color; // Store the starting color
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (!isTriggered && other.CompareTag("Player")) // Prevents the player from spamming the pressure plate
+        if (!isTriggered && other.CompareTag("Player")) // Prevents spamming
         {
+            if (plateRenderer != null)
+            {
+                plateRenderer.material.color = Color.red; // Change color to red
+            }
             StartCoroutine(FireArrowWithDelay());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (plateRenderer != null)
+            {
+                plateRenderer.material.color = originalColor; // Reset to original color
+            }
         }
     }
 
     IEnumerator FireArrowWithDelay()
     {
         isTriggered = true; // Prevent multiple triggers
-        yield return new WaitForSeconds(fireDelay); // Wait half a second before firing
+        yield return new WaitForSeconds(fireDelay); // Wait before firing
         FireArrow();
-        yield return new WaitForSeconds(resetTime); // Pressure plate cooldown
-        isTriggered = false; // Reset the trigger
+        yield return new WaitForSeconds(resetTime); // Cooldown time
+        isTriggered = false; // Reset trigger
     }
 
     void FireArrow()
