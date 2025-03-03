@@ -29,13 +29,27 @@ public class Camera : MonoBehaviour
 
     void Update()
     {
-        float mouseX = Input.GetAxis(mouseXAxis) * sensitivity;
-        float mouseY = Input.GetAxis(mouseYAxis) * sensitivity;
-        float controllerX = Input.GetAxis(controllerXAxis) * sensitivity;
-        float controllerY = Input.GetAxis(controllerYAxis) * sensitivity;
+        float mouseX = Input.GetAxis(mouseXAxis);
+        float mouseY = Input.GetAxis(mouseYAxis);
 
-        rotation.x += mouseX + controllerX;
-        rotation.y += mouseY + controllerY;
+        float controllerX = Input.GetAxis(controllerXAxis);
+        float controllerY = Input.GetAxis(controllerYAxis);
+
+        float adjustedMouseX = mouseX * sensitivity;
+        float adjustedMouseY = mouseY * sensitivity;
+        float adjustedControllerX = controllerX * sensitivity;
+        float adjustedControllerY = controllerY * sensitivity;
+
+        if (Mathf.Abs(adjustedMouseX) > 0.1f || Mathf.Abs(adjustedMouseY) > 0.1f)
+        {
+            rotation.x += adjustedMouseX;
+            rotation.y += adjustedMouseY;
+        }
+        else
+        {
+            rotation.x += adjustedControllerX;
+            rotation.y += adjustedControllerY;
+        }
 
         rotation.y = Mathf.Clamp(rotation.y, -yRotationLimit, yRotationLimit);
 
