@@ -5,11 +5,17 @@ using UnityEngine;
 
 public class PlayerController: MonoBehaviour
 {
-
     public float walkSpeed = 1f;
     public float sprintSpeed = 1.5f;
     public Rigidbody rb;
     private float currentSpeed;
+
+    // Input mappings
+    const string keyboardHorizontal = "Horizontal";
+    const string keyboardVertical = "Vertical";
+    const string controllerHorizontal = "LeftStickX"; // Left Stick X
+    const string controllerVertical = "LeftStickY";   // Left Stick Y
+    const string sprintKey = "Sprint"; // Sprint Button (Controller)
 
     private void FixedUpdate()
     {
@@ -18,9 +24,11 @@ public class PlayerController: MonoBehaviour
 
     private void Move()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        // Get input from Keyboard (WASD / Arrow Keys) and Controller (Left Stick)
+        float horizontalInput = Input.GetAxisRaw(keyboardHorizontal) + Input.GetAxis(controllerHorizontal);
+        float verticalInput = Input.GetAxisRaw(keyboardVertical) + Input.GetAxis(controllerVertical);
 
+        // Get camera-relative directions
         Vector3 forward = UnityEngine.Camera.main.transform.forward;
         Vector3 right = UnityEngine.Camera.main.transform.right;
         forward.y = 0;
@@ -28,9 +36,10 @@ public class PlayerController: MonoBehaviour
         forward = forward.normalized;
         right = right.normalized;
 
-        Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
+        Vector3 moveDirectionRelCam = (verticalInput * forward) + (horizontalInput * right);
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        // Sprinting (Keyboard: LeftShift, Controller: Assigned Sprint Button)
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetButton(sprintKey))
         {
             currentSpeed = sprintSpeed;
         }
@@ -38,11 +47,8 @@ public class PlayerController: MonoBehaviour
         {
             currentSpeed = walkSpeed;
         }
-        Vector3 forwardVertInput = verticalInput * forward;
-        Vector3 rightHoriInput = horizontalInput * right;
 
-        Vector3 moveDirectionRelCam = forwardVertInput + rightHoriInput;
-
+        // Apply movement
         rb.MovePosition(transform.position + moveDirectionRelCam * currentSpeed * Time.fixedDeltaTime);
     }
 }
