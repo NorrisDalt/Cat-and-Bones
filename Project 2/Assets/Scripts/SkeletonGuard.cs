@@ -74,4 +74,16 @@ public class SkeletonGuard : MonoBehaviour
         targetWaypoint = waypoints[currentWaypointIndex];
         isRotating = false;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        // If the arrow hits the player, deal damage
+        if (other.CompareTag("Player"))
+        {
+            Health playerHealth = other.GetComponent<Health>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(); // Triggers scene reload
+            }
+        }
+    }
 }

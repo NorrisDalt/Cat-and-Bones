@@ -30,7 +30,7 @@ public class Inventory : MonoBehaviour
 
         if (other.CompareTag("Key"))
         {
-            keyCount++; //Counts number of keys
+            keyCount++; // Counts number of keys
             Destroy(other.gameObject); // Destroys key
         }
 
@@ -40,4 +40,3 @@ public class Inventory : MonoBehaviour
         }
     }
 }
-
