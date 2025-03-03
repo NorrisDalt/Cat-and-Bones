@@ -4,6 +4,7 @@ using System.Collections;
 
 public class Inventory : MonoBehaviour
 {
+    private int keyCount = 0;
     private bool hasGem = true;
 
     public GameObject gem;
@@ -24,6 +25,12 @@ public class Inventory : MonoBehaviour
             {
                 //entrance.OpenEntrance();
             }
+        }
+
+        if (other.CompareTag("Key"))
+        {
+            keyCount++; //Counts number of keys
+            Destroy(other.gameObject); // Destroys key
         }
     }
 }
