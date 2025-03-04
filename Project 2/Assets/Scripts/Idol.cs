@@ -5,7 +5,13 @@ using UnityEngine;
 public class Idol : MonoBehaviour
 {
     public GameObject secretExit;
+    public GameObject idolInHand;
     public static bool idolCollected = false;
+
+    private void Start()
+    {
+        if (idolInHand) idolInHand.SetActive(false);
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -17,6 +23,8 @@ public class Idol : MonoBehaviour
                 idolCollected = true;
 
                 Destroy(gameObject);
+
+                if (idolInHand) idolInHand.SetActive(true);
 
                 Destroy(secretExit);
             }

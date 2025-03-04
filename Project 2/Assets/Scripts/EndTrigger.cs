@@ -9,7 +9,9 @@ public class EndTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") && Idol.idolCollected) // Check if idol is collected
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload scene
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene("Win");
         }
     }
 }

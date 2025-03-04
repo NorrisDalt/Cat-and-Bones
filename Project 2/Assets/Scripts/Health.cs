@@ -18,7 +18,8 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Player has died! Reloading scene...");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reloads the scene
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        SceneManager.LoadScene("GameOver");
     }
 }
