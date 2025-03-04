@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Inventory : MonoBehaviour
     public GameObject gem;
     public Transform gemSlot;
     public Entrance entrance;
+    public AudioSource itemPickup;
 
     void Start()
     {
@@ -32,6 +34,11 @@ public class Inventory : MonoBehaviour
         {
             keyCount++; // Counts number of keys
             Destroy(other.gameObject); // Destroys key
+
+            if (itemPickup)
+            {
+                itemPickup.Play();
+            }
         }
 
         if (other.CompareTag("KeyDoor") && keyCount >= 2) // Checks if player has 2 keys

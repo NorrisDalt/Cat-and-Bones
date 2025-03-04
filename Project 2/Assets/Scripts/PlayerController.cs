@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class PlayerController: MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 1f;
     public float sprintSpeed = 1.5f;
     public Rigidbody rb;
     private float currentSpeed;
+
+    public AudioSource footsteps;
+    public float stepRate = 0.5f;
+    public float sprintStepRate = 0.35f;
+    private float stepCooldown = 0f;
 
     const string keyboardHorizontal = "Horizontal";
     const string keyboardVertical = "Vertical";
@@ -38,12 +43,37 @@ public class PlayerController: MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetButton(sprintKey))
         {
             currentSpeed = sprintSpeed;
+            stepRate = sprintStepRate;
         }
         else
         {
             currentSpeed = walkSpeed;
+            stepRate = 0.5f;
         }
 
         rb.MovePosition(transform.position + moveDirectionRelCam * currentSpeed * Time.fixedDeltaTime);
+
+        if (moveDirectionRelCam.magnitude > 0.1f)
+        {
+            PlayFootsteps();
+        }
+        else
+        {
+            footsteps.Stop();
+        }
+    }
+
+    private void PlayFootsteps()
+    {
+        if (footsteps && Time.time >= stepCooldown)
+        {
+            if (!footsteps.isPlaying)
+            {
+                footsteps.Play();
+                footsteps.volume = 5f;
+
+            }
+            stepCooldown = Time.time + stepRate;
+        }
     }
 }

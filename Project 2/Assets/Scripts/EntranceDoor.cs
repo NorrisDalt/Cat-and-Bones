@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntranceDoor: MonoBehaviour
+public class EntranceDoor : MonoBehaviour
 {
     public GameObject gemInHand;
     public GameObject gemOnDoor;
     public GameObject door;
 
     public ParticleSystem gemSparkleEffect;
+    public AudioSource gemUnlocked;
 
     private bool isActivated = false;
 
@@ -32,9 +33,7 @@ public class EntranceDoor: MonoBehaviour
 
         if (gemInHand) gemInHand.SetActive(false);
         if (gemOnDoor) gemOnDoor.SetActive(true);
-
         if (gemSparkleEffect) gemSparkleEffect.Play();
-
 
         yield return new WaitForSeconds(2f);
 
@@ -44,10 +43,13 @@ public class EntranceDoor: MonoBehaviour
             door.SetActive(false);
         }
 
+        if (gemUnlocked)
+        {
+            gemUnlocked.Play();
+        }
 
         yield return new WaitForSeconds(1f);
 
         if (gemSparkleEffect) gemSparkleEffect.Stop();
-
     }
 }

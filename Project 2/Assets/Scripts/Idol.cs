@@ -7,6 +7,7 @@ public class Idol : MonoBehaviour
     public GameObject secretExit;
     public GameObject idolInHand;
     public static bool idolCollected = false;
+    public AudioSource itemPickup;
 
     private void Start()
     {
@@ -25,6 +26,11 @@ public class Idol : MonoBehaviour
                 Destroy(gameObject);
 
                 if (idolInHand) idolInHand.SetActive(true);
+
+                if (itemPickup)
+                {
+                    itemPickup.Play();
+                }
 
                 Destroy(secretExit);
             }
