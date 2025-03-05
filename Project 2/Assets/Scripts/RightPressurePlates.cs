@@ -11,6 +11,7 @@ public class RightPressurePlates : MonoBehaviour
     public float resetTime = 3f; // Time before it can be triggered again
     public Renderer plateRenderer; // Reference to the plate's renderer
     private Color originalColor; // Store original color
+    public AudioSource arrowShoot;
 
     private bool isTriggered = false;
 
@@ -56,6 +57,10 @@ public class RightPressurePlates : MonoBehaviour
 
     void FireArrow()
     {
+        if (arrowShoot)
+        {
+            arrowShoot.Play();
+        }
         GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation * Quaternion.Euler(0, 0, 90)); // Fixes rotation
         Rigidbody rb = arrow.GetComponent<Rigidbody>();
         if (rb != null)

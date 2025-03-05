@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class OpeningText : MonoBehaviour
 {
-    public TextMeshProUGUI text;
+    public TextMeshProUGUI openingText;
     public float fadeDuration = 2f;
     public float displayDuration = 2f;
 
@@ -14,10 +14,10 @@ public class OpeningText : MonoBehaviour
 
     void Start()
     {
-        canvasGroup = text.GetComponent<CanvasGroup>();
+        canvasGroup = openingText.GetComponent<CanvasGroup>();
         if (canvasGroup == null)
         {
-            canvasGroup = text.gameObject.AddComponent<CanvasGroup>();
+            canvasGroup = openingText.gameObject.AddComponent<CanvasGroup>();
         }
 
         StartCoroutine(FadeTextSequence());

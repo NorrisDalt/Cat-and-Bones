@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Inventory : MonoBehaviour
     public Transform gemSlot;
     public Entrance entrance;
     public AudioSource itemPickup;
+    public TextMeshProUGUI objectiveText;
 
     void Start()
     {
@@ -23,27 +25,50 @@ public class Inventory : MonoBehaviour
         if (other.CompareTag("Entrance") && hasGem)
         {
             hasGem = false;
-
             if (entrance != null)
             {
-                //entrance.OpenEntrance();
+
             }
         }
 
         if (other.CompareTag("Key"))
         {
-            keyCount++; // Counts number of keys
-            Destroy(other.gameObject); // Destroys key
+            keyCount++;
+            Destroy(other.gameObject);
 
             if (itemPickup)
             {
                 itemPickup.Play();
             }
+
+            if (objectiveText)
+            {
+                if (keyCount == 1)
+                {
+                    objectiveText.text = "Find the second key.";
+                }
+                else if (keyCount == 2)
+                {
+                    objectiveText.text = "Find the secret door.";
+                }
+            }
         }
 
-        if (other.CompareTag("KeyDoor") && keyCount >= 2) // Checks if player has 2 keys
+        if (other.CompareTag("KeyDoor") && keyCount >= 2)
         {
-            Destroy(other.gameObject); // Deletes the door
+            Destroy(other.gameObject);
+            if (objectiveText)
+            {
+                objectiveText.text = "Collect the idol.";
+            }
+        }
+
+        if (other.CompareTag("DisplayObjective"))
+        {
+            if (objectiveText)
+            {
+                objectiveText.text = "Find the two keys.";
+            }
         }
     }
 }

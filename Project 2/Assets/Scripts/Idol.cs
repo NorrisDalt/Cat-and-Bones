@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Idol : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Idol : MonoBehaviour
     public GameObject idolInHand;
     public static bool idolCollected = false;
     public AudioSource itemPickup;
+    public TextMeshProUGUI objectiveText;
 
     private void Start()
     {
@@ -33,6 +35,10 @@ public class Idol : MonoBehaviour
                 }
 
                 Destroy(secretExit);
+                if (objectiveText)
+                {
+                    objectiveText.text = "ESCAPE!!!";
+                }
             }
         }
     }

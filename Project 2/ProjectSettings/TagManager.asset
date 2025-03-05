@@ -10,6 +10,7 @@ TagManager:
   - Idol
   - BackWall
   - Enemy
+  - DisplayObjective
   layers:
   - Default
   - TransparentFX

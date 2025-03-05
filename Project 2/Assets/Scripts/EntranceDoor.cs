@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EntranceDoor : MonoBehaviour
 {
@@ -38,15 +39,8 @@ public class EntranceDoor : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         if (gemOnDoor) gemOnDoor.SetActive(false);
-        if (door)
-        {
-            door.SetActive(false);
-        }
-
-        if (gemUnlocked)
-        {
-            gemUnlocked.Play();
-        }
+        if (door) door.SetActive(false);
+        if (gemUnlocked) gemUnlocked.Play();
 
         yield return new WaitForSeconds(1f);
 
