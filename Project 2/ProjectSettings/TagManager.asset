@@ -9,6 +9,7 @@ TagManager:
   - KeyDoor
   - Idol
   - BackWall
+  - Enemy
   layers:
   - Default
   - TransparentFX
