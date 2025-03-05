@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
             hasGem = false;
             if (entrance != null)
             {
-
+                entrance.GetComponent<Collider>().enabled = false;
             }
         }
 
@@ -68,6 +68,7 @@ public class Inventory : MonoBehaviour
             if (objectiveText)
             {
                 objectiveText.text = "Find the two keys.";
+                other.GetComponent<Collider>().enabled = false;
             }
         }
     }
