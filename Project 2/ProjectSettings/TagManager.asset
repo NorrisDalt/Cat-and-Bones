@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Entrance
+  - Key
+  - KeyDoor
+  - Idol
+  - BackWall
+  - Enemy
+  - DisplayObjective
   layers:
   - Default
   - TransparentFX
